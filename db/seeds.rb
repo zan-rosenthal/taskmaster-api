@@ -1,23 +1,19 @@
 container = Task.create!(task_type: 'Container', title: 'Tend Your Indoor Garden')
 
-moisture_level_options = JSON.generate(
-  {
+moisture_level_options = {
     options: [
       { label: 'Dry. The plant needs more water.', value: 'dry'},
       { label: 'Just right.', value: 'perfect'},
-      { label: 'The plant shows signs of overwatering.'}
+      { label: 'The plant shows signs of overwatering.', value: 'overwatered'}
     ]
   }
-)
 
-yes_no_options = JSON.generate(
-  {
+yes_no_options = {
     options: [
       { label:  'Yes', value: 'yes' },
       { label: 'No', value: 'no'}
     ]
   }
-)
 
 Task.create(
   task_type: 'MultiSelect',
