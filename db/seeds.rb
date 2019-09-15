@@ -4,14 +4,14 @@ moisture_level_options = {
     options: [
       { label: 'Dry. The plant needs more water.', value: 'dry'},
       { label: 'Just right.', value: 'perfect'},
-      { label: 'The plant shows signs of overwatering.', value: 'overwatered'}
+      { label: 'The plant shows signs of overwatering.', value: 'overwatered' }
     ]
   }
 
 yes_no_options = {
     options: [
-      { label:  'Yes', value: 'yes' },
-      { label: 'No', value: 'no'}
+      { label: 'Yes', value: 'yes' },
+      { label: 'No', value: 'no' }
     ]
   }
 
