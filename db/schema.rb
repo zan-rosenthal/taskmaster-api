@@ -15,7 +15,15 @@ ActiveRecord::Schema.define(version: 2019_09_15_150912) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "job_tasks", force: :cascade do |t|
+    t.bigint "task_id"
+    t.bigint "container_id"
+    t.index ["container_id"], name: "index_job_tasks_on_container_id"
+    t.index ["task_id"], name: "index_job_tasks_on_task_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
