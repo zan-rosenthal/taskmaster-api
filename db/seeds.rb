@@ -37,7 +37,8 @@ Task.create(
 )
 water_task_continer = Task.create(
   task_type: 'container',
-  title: 'Water'
+  title: 'Water',
+  container_id: task_container.id
 )
 Task.create(
   task_type: 'MultiSelect',
@@ -58,9 +59,9 @@ job = Job.create(
   name: 'Check on Garden'
 )
 
-# job_task.container = JobTask.create(
-#   container_id: job.id,
-#   task_id: task_container.id,
-# )
+job_task_container = JobTask.create(
+  container_id: job.id,
+  task_id: task_container.id
+)
 
-# job_task.container.create_dependent_job_tasks
+job_task_container.create_dependent_job_tasks

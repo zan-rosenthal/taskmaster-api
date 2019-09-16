@@ -3,14 +3,14 @@
     belongs_to :container, polymorphic: true
     has_many :steps, as: :container
 
-    validates_presence_of :contaier
+    validates_presence_of :container
     validates_presence_of :task
 
     def create_dependent_job_tasks
       ActiveRecord::Base.transaction do
         recursively_create_dependent_job_tasks
       end
-    rescue ActiveRecord::RecordInvalid => error
+    # rescue ActiveRecord::RecordInvalid => error
       # TODO: return error to graphql for some 
       # helpful messaging
       # Send to a monitoring service

@@ -4,10 +4,5 @@ class CreateJobs < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.timestamps
     end
-
-    create_table :job_tasks do |t|
-      t.belongs_to :task
-      t.references :container
-    end
   end
 end

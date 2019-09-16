@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_15_150912) do
+ActiveRecord::Schema.define(version: 2019_09_16_115511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_150912) do
   create_table "job_tasks", force: :cascade do |t|
     t.bigint "task_id"
     t.bigint "container_id"
-    t.index ["container_id"], name: "index_job_tasks_on_container_id"
+    t.string "container_type"
     t.index ["task_id"], name: "index_job_tasks_on_task_id"
   end
 
