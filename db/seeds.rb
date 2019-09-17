@@ -55,13 +55,14 @@ Task.create(
   container_id: water_task_continer.id
 )
 
-job = Job.create(
+job = Job.create!(
   name: 'Check on Garden'
 )
 
 job_task_container = JobTask.create(
   container_id: job.id,
+  container_type: "Job",
   task_id: task_container.id
 )
 
-job_task_container.create_dependent_job_tasks
+job_task_container.create_dependent_job_tasks!
