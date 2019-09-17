@@ -12,25 +12,22 @@ class JobTask < ApplicationRecord
   delegate :date, to: :task
 
   def create_dependent_job_tasks!
-    if valid?
-      ActiveRecord::Base.transaction do
-        recursively_create_dependent_job_tasks
-      end
-    else
-      raise ActiveRecord::RecordInvalid
+    return unless valid?
+
+    ActiveRecord::Base.transaction do
+      recursively_create_dependent_job_tasks
     end
-    # rescue ActiveRecord::RecordInvalid => error
-    # TODO: return error to graphql for some
-    # helpful messaging
-    # Send to a monitoring service
   end
 
   def recursively_create_dependent_job_tasks
-    if task.steps?
-      task.steps.map do |step|
-        job_task = step.job_tasks.create(container_id: id, container_type: 'JobTask')
-        job_task.recursively_create_dependent_job_tasks
-      end
+    return unless task.steps?
+
+    task.steps.map do |step|
+      job_task = step.job_tasks.create(
+        container_id: id,
+        container_type: 'JobTask'
+      )
+      job_task.recursively_create_dependent_job_tasks
     end
   end
 end
